@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Locailable</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <style>
+        body {
+            font-family: "Times New Roman", Georgia, Serif;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-family: "Playfair Display";
+            letter-spacing: 5px;
+        }
+
+        .search-container {
+            text-align: center;
+            padding: 10px;
+        }
+
+        .search-container input[type=text] {
+            padding: 10px;
+            width: 300px;
+        }
+
+        .search-container button {
+            padding: 10px;
+        }
+
+        /* Stil eklenen bölüm başlangıcı */
+        #about h1 {
+            font-size: 24px; /* Yazı boyutunu küçültmek için */
+            text-align: center; /* Ortalamak için */
+        }
+        /* Stil eklenen bölüm sonu */
+    </style>
+    {% load static %}
+
+</head>
+
+<body>
+
+    <!-- Navbar (sit on top) -->
+    <div class="w3-top">
+        <div class="w3-bar w3-white w3-padding w3-card" style="letter-spacing:4px;">
+            <a href="#home" class="w3-bar-item w3-button">LOCAILABLE</a>
+            <!-- Right-sided navbar links. Hide them on small screens -->
+            <div class="w3-right w3-hide-small">
+            <a href="javascript:void(0);" onclick="scrollToTopRatedPlaces()" class="w3-bar-item w3-button">Places</a>
+                <a href="{% url 'users:login' %}" class="w3-bar-item w3-button">Sign up / Log in</a>
+                <!-- Remove the "Contact" link -->
+            </div>
+            <!-- Search Engine -->
+            <div class="search-container w3-hide-small">
+                <form action="/search" method="GET">
+                    <input type="text" placeholder="Search..." name="q">
+                    <button type="submit">Search</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Header -->
+    <header class="w3-display-container w3-content w3-wide" style="max-width:1600px;min-width:500px" id="home">
+        <img class="w3-image" src="/w3images/hamburger.jpg" alt="Hamburger Catering" width="1600" height="800">
+        <div class="w3-display-bottomleft w3-padding-large w3-opacity">
+            <h1 class="w3-xxlarge">Le Catering</h1>
+        </div>
+    </header>
+
+    <!-- Page content -->
+    <div class="w3-content" style="max-width:1100px">
+
+        <!-- About Section -->
+        <div id="top-rated-places">
+<div class="w3-row w3-padding-64" id="places">
+    <div class="w3-col m6 w3-padding-large w3-hide-small"></div>
+
+    <div class="w3-row w3-padding-64" id="top-rated-places">
+        <!-- Centered "Top Rated Places" heading -->
+        <h1 style="font-weight: bold; text-align: center;">Top Rated Places</h1><br>
+    </div>
+</div>
+<!-- First Photo Grid -->
+<div class="w3-row-padding">
+    <div class="w3-third w3-container w3-margin-bottom">
+        <img src="{% static 'business/cafecadde.jpg' %}" alt="Cafe Cadde" style="width:100%; height:200px;">
+        <div class="w3-container w3-white">
+            <p><b>Cafe Cadde</b></p>
+            <p>Address: {{ business.location }}</p>
+            <p>Rating: {{ business.rating }}</p>
+            <p>Capacity: {{ business.rating }}</p>
+            <p>Available Tables: {{ business.rating }}</p>
+        </div>
+    </div>
+    <div class="w3-third w3-container w3-margin-bottom">
+        <img src="{% static 'business/crepe.jpeg' %}" alt="The Crepe Escape" style="width:100%; height:200px;">
+        <div class="w3-container w3-white">
+            <p><b>The Crepe Escape</b></p>
+            <p>Address: {{ business.location }}</p>
+            <p>Rating: {{ business.rating }}</p>
+            <p>Capacity: {{ business.rating }}</p>
+            <p>Available Tables: {{ business.rating }}</p>        </div>
+    </div>
+    <div class="w3-third w3-container">
+        <img src="{% static 'business/strada.jpeg' %}" alt="The Crepe Escape" style="width:100%; height:200px;">
+        <div class="w3-container w3-white">
+            <p><b>Strada</b></p>
+            <p>Address: {{ business.location }}</p>
+            <p>Rating: {{ business.rating }}</p>
+            <p>Capacity: {{ business.rating }}</p>
+            <p>Available Tables: {{ business.rating }}</p>
+        </div>
+    </div>
+</div>
+        <!-- Second Photo Grid -->
+        <div class="w3-row-padding">
+    <div class="w3-third w3-container w3-margin-bottom">
+        <img src="{% static 'business/draft.jpeg' %}" alt="Cafe Cadde" style="width:100%; height:200px;">
+        <div class="w3-container w3-white">
+            <p><b>Draft</b></p>
+            <p>Address: {{ business.location }}</p>
+            <p>Rating: {{ business.rating }}</p>
+            <p>Capacity: {{ business.rating }}</p>
+            <p>Available Tables: {{ business.rating }}</p>
+        </div>
+    </div>
+    <div class="w3-third w3-container w3-margin-bottom">
+        <img src="{% static 'business/artois.jpeg' %}" alt="The Crepe Escape" style="width:100%; height:200px;">
+        <div class="w3-container w3-white">
+            <p><b>Artois Cadde - Cocktail Bar & Chef Restaurant</b></p>
+            <p>Address: {{ business.location }}</p>
+            <p>Rating: {{ business.rating }}</p>
+            <p>Capacity: {{ business.rating }}</p>
+            <p>Available Tables: {{ business.rating }}</p>        </div>
+    </div>
+    <div class="w3-third w3-container">
+        <img src="{% static 'business/noir.jpeg' %}" alt="The Crepe Escape" style="width:100%; height:200px;">
+        <div class="w3-container w3-white">
+            <p><b>Brasserie Noir</b></p>
+            <p>Address: {{ business.location }}</p>
+            <p>Rating: {{ business.rating }}</p>
+            <p>Capacity: {{ business.rating }}</p>
+            <p>Available Tables: {{ business.rating }}</p>
+        </div>
+    </div>
+</div>
+        <!-- Pagination -->
+        <div class="w3-center w3-padding-32">
+            <div class="w3-bar">
+                <a href="#" class="w3-bar-item w3-button w3-hover-black">«</a>
+                <a href="#" class="w3-bar-item w3-black w3-button">1</a>
+                <a href="#" class="w3-bar-item w3-button w3-hover-black">2</a>
+                <a href="#" class="w3-bar-item w3-button w3-hover-black">3</a>
+                <a href="#" class="w3-bar-item w3-button w3-hover-black">4</a>
+                <a href="#" class="w3-bar-item w3-button w3-hover-black">»</a>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Footer -->
+    <footer class="w3-row-padding w3-padding-32">
+        <div class="w3-third">
+            <h3>About Locailable</h3>
+            <p>Who We Are</p>
+            <p>Contact Us</p>
+        </div>
+
+        <div class="w3-third">
+            <h3>BLOG POSTS</h3>
+            <ul class="w3-ul w3-hoverable">
+                <li class="w3-padding-16">
+                    <img src="/w3images/workshop.jpg" class="w3-left w3-margin-right" style="width:50px">
+                    <span class="w3-large">Lorem</span><br>
+                    <span>Sed mattis nunc</span>
+                </li>
+                <li class="w3-padding-16">
+                    <img src="/w3images/gondol.jpg" class="w3-left w3-margin-right" style="width:50px">
+                    <span class="w3-large">Ipsum</span><br>
+                    <span>Praes tinci sed</span>
+                </li>
+            </ul>
+        </div>
+
+        <div class="w3-third w3-serif">
+            <h3>POPULAR TAGS</h3>
+            <p>
+                <span class="w3-tag w3-dark-grey w3-small w3-margin-bottom">Istanbul</span> <span
+                    class="w3-tag w3-dark-grey w3-small w3-margin-bottom">Dinner</span> <span
+                    class="w3-tag w3-dark-grey w3-small w3-margin-bottom">Salmon</span> <span
+                    class="w3-tag w3-dark-grey w3-small w3-margin-bottom">Drinks</span> <span
+                    class="w3-tag w3-dark-grey w3-small w3-margin-bottom">Chicken</span> <span
+                    class="w3-tag w3-dark-grey w3-small w3-margin-bottom">Fried</span> <span
+                    class="w3-tag w3-dark-grey w3-small w3-margin-bottom">Fish</span> <span
+                    class="w3-tag w3-dark-grey w3-small w3-margin-bottom">Duck</span>
+            </p>
+        </div>
+    </footer>
+<script>
+    function scrollToTopRatedPlaces() {
+        var topRatedPlacesSection = document.getElementById("top-rated-places");
+
+        if (topRatedPlacesSection) {
+            // Scroll smoothly to the top-rated-places section
+            topRatedPlacesSection.scrollIntoView({ behavior: 'smooth' });
+        }
+    }
+</script>
+</body>
+
+</html>

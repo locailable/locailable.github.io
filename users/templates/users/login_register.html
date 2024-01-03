@@ -1,0 +1,71 @@
+<!-- users/templates/users/login_register.html -->
+{% extends 'base.html' %}
+
+{% block title %}Your Login/Register Page Title{% endblock %}
+
+{% block content %}
+  <div style="text-align: center; margin-top: 50px;">
+    <h1>{{ page|title }}</h1>
+
+    <!-- Login Form -->
+   <form method="POST" action="{% url 'users:login' %}" id="loginForm" style="display: inline-block; text-align: left; padding: 20px; border: 1px solid #ccc; border-radius: 8px;">
+  {% csrf_token %}
+  <!-- Add your form fields here -->
+  <label for="id_username">Username:</label>
+  <input type="text" name="username" id="id_username" class="input-field" required>
+  <br>
+  <label for="id_password">Password:</label>
+  <input type="password" name="password" id="id_password" class="input-field" required>
+  <br>
+  <button type="submit" style="padding: 10px; margin: 10px auto; display: block;">Login</button>
+</form>
+
+<p style="margin-top: 20px;">Don't have an account? <a href="#" onclick="showRegisterForm()">Register</a></p>
+
+<!-- Registration Form (Initially Hidden) -->
+<form method="POST" action="{% url 'users:register' %}" id="registerForm" style="display: none; text-align: left; padding: 20px; border: 1px solid #ccc; border-radius: 8px;">
+  {% csrf_token %}
+  <!-- Add your registration form fields here -->
+  <label for="id_first_name">First Name:</label>
+  <input type="text" name="first_name" id="id_first_name" class="input-field" required>
+  <br>
+  <label for="id_last_name">Last Name:</label>
+  <input type="text" name="last_name" id="id_last_name" class="input-field" required>
+  <br>
+  <label for="id_email">Email:</label>
+  <input type="email" name="email" id="id_email" class="input-field" required>
+  <br>
+  <label for="id_username">Username:</label>
+  <input type="text" name="username" id="id_username" class="input-field" required>
+  <br>
+  <label for="id_password1">Password:</label>
+  <input type="password" name="password1" id="id_password1" class="input-field" required>
+  <br>
+  <label for="id_password2">Confirm Password:</label>
+  <input type="password" name="password2" id="id_password2" class="input-field" required>
+  <br>
+  <!-- Add other fields as needed -->
+  <button type="submit" style="padding: 10px; margin-top: 10px; display: block;">Register</button>
+</form>
+
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+  // Check if the URL contains '/users/login/register/' and show the registration form accordingly
+  if (window.location.pathname === '/users/login/register/') {
+    showRegisterForm();
+  }
+});
+
+function showRegisterForm() {
+  document.getElementById("loginForm").style.display = "none";
+  document.getElementById("registerForm").style.display = "block";
+}
+
+// Redirect to the registration page when clicking the "Register" link in the login form
+document.querySelector('a[href="#"]').addEventListener('click', function(event) {
+  event.preventDefault();
+  window.location.href = '/users/register/';  // Update the URL here
+});
+</script>
+
+{% endblock %}

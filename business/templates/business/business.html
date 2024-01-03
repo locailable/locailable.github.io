@@ -1,0 +1,13 @@
+<!-- business/templates/business/business.html -->
+{% extends 'base.html' %}
+
+{% block content %}
+  <h1>Businesses</h1>
+  <form method="GET" action="{% url 'business' %}">
+    <input type="text" name="query" placeholder="Search...">
+    <button type="submit">Search</button>
+  </form>
+  {% for cafe in business %}
+    <p>{{ cafe.name }}</p>
+  {% endfor %}
+{% endblock %}

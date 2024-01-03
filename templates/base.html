@@ -1,0 +1,49 @@
+<!-- base.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>{% block title %}Your Project Title{% endblock %}</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <style>
+        /* Your custom styles go here */
+    </style>
+    {% load static %}
+</head>
+<body>
+
+    <!-- Navbar (sit on top) -->
+    <div class="w3-top">
+        <div class="w3-bar w3-white w3-padding w3-card" style="letter-spacing:4px;">
+            <a href="{% url 'home' %}" class="w3-bar-item w3-button">LOCAILABLE</a>
+            <!-- Right-sided navbar links. Hide them on small screens -->
+            <div class="w3-right w3-hide-small">
+                <a href="{% url 'home' %}#top-rated-places" class="w3-bar-item w3-button">Places</a>
+                <a href="{% url 'users:login' %}" class="w3-bar-item w3-button">Sign up / Log in</a>
+                <!-- Remove the "Contact" link -->
+            </div>
+            <!-- Search Engine -->
+            <div class="search-container w3-hide-small">
+                <form action="/search" method="GET">
+                    <input type="text" placeholder="Search..." name="q">
+                    <button type="submit">Search</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Content section -->
+    <div class="content">
+        {% block content %}{% endblock %}
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <!-- Add your footer content here -->
+    </footer>
+
+    <!-- Add your additional script includes here -->
+
+</body>
+</html>

@@ -1,0 +1,49 @@
+<!-- users/templates/users/register.html -->
+{% extends 'base.html' %}
+
+{% block title %}Register{% endblock %}
+
+{% block content %}
+  <div style="text-align: center; margin-top: 50px;">
+    <h1>{{ page|title }}</h1>
+
+    <!-- Registration Form -->
+    <form method="POST" action="{% url 'users:register' %}" id="registerForm" style="text-align: left; padding: 20px; border: 1px solid #ccc; border-radius: 8px;">
+      {% csrf_token %}
+
+      <label for="{{ form.username.id_for_label }}">Username:</label>
+      <br>
+      <input type="text" name="{{ form.username.name }}" id="{{ form.username.id_for_label }}" required>
+      <br><br>
+
+      <label for="{{ form.first_name.id_for_label }}">First Name:</label>
+      <br>
+      <input type="text" name="{{ form.first_name.name }}" id="{{ form.first_name.id_for_label }}" required>
+      <br><br>
+
+      <label for="{{ form.last_name.id_for_label }}">Last Name:</label>
+      <br>
+      <input type="text" name="{{ form.last_name.name }}" id="{{ form.last_name.id_for_label }}" required>
+      <br><br>
+
+      <label for="{{ form.email.id_for_label }}">Email:</label>
+      <br>
+      <input type="email" name="{{ form.email.name }}" id="{{ form.email.id_for_label }}" required>
+      <br><br>
+
+      <label for="{{ form.password1.id_for_label }}">Password:</label>
+      <br>
+      <input type="password" name="{{ form.password1.name }}" id="{{ form.password1.id_for_label }}" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Must contain at least one number, one lowercase letter, one uppercase letter, and at least 8 characters" required>
+      <br><br>
+
+      <label for="{{ form.password2.id_for_label }}">Confirm Password:</label>
+      <br>
+      <input type="password" name="{{ form.password2.name }}" id="{{ form.password2.id_for_label }}" required>
+      <br><br>
+
+      <p style="font-weight: bold;">Password must contain at least one number, one lowercase letter, one uppercase letter, and at least 8 characters.</p>
+
+      <button type="submit" style="padding: 10px; margin-top: 10px; display: block; font-weight: bold;">Register</button>
+    </form>
+  </div>
+{% endblock %}

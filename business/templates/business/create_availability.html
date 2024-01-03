@@ -1,0 +1,11 @@
+<!-- business/templates/business/create_availability.html -->
+{% extends 'base.html' %}
+
+{% block content %}
+  <h1>Create Availability</h1>
+  <form method="POST" action="{% url 'create_availability' business.id %}">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Create</button>
+  </form>
+{% endblock %}
